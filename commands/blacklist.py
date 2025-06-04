@@ -19,9 +19,6 @@ async def _register_blacklist(valor: Valor):
     desc = "A list that shows untrustworthy/bad behaving players."
     parser = argparse.ArgumentParser(description='Blacklist command')
     parser.add_argument('-l', '--list', action="store_true") # list all blacklisted players and their UUID
-    parser.add_argument('-a', '--add', type=str)  # player name
-    parser.add_argument('-r', '--reason', type=str)
-    parser.add_argument('-d', '--delete', type=str)  # player name
     parser.add_argument('-s', '--search', type=str)  # player name
 
     @valor.command()
@@ -47,40 +44,6 @@ async def _register_blacklist(valor: Valor):
             content = tables.fmt(["Name", "Guild", "Time added"], blacklist_rows)
             return await LongTextEmbed.send_message(valor, ctx, title=f"Blacklist", content=content, color=0xFF10, code_block=True, footer="Ask any Titan+ with proof to add someone to the blacklist")
 
-        elif opt.add:
-            if not commands.common.role1(ctx.author) and not TEST:
-                return await ctx.send(embed=ErrorEmbed("No Permissions"))
-            
-            if "-" in opt.add:
-                return await ctx.send(embed=ErrorEmbed("Invalid input")) # lazy sanitation
-            
-            reason = opt.reason if opt.reason else "No reason given"
-            timestamp = int(time.time())
-            
-            try:
-                add_query = f"""REPLACE INTO player_blacklist VALUES ("{await get_uuid(opt.add)}", "{reason}", {timestamp})"""
-            except:
-                return await ctx.send(embed=ErrorEmbed("Can't add player (Player doesn't exist?)"))
-            
-            time_str = f"<t:{timestamp}:F>"
-
-            result = await ValorSQL._execute(add_query)
-
-            content = f"Reason: {reason}\nTime added: {time_str}"
-            return await LongTextEmbed.send_message(valor, ctx, title=f"Added {opt.add} to the blacklist", content=content, color=0xFF10)
-        
-        elif opt.delete:
-            if not commands.common.role1(ctx.author) and not TEST:
-                return await ctx.send(embed=ErrorEmbed("No Permissions"))
-            
-            if "-" in opt.delete:
-                return await ctx.send(embed=ErrorEmbed("Invalid input")) # lazy sanitation
-        
-            delete_query = f"DELETE FROM player_blacklist WHERE uuid='{await get_uuid(opt.delete)}'"
-            result = await ValorSQL._execute(delete_query)
-
-            return await LongTextEmbed.send_message(valor, ctx, title=f"Deleted {opt.delete}", content="Removed player from the blacklist", color=0xFF10)
-        
         elif opt.search:           
             uuid = await get_uuid(opt.search) if '-' not in opt.search else opt.search
             username = await from_uuid(uuid)
