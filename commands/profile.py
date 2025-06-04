@@ -14,7 +14,6 @@ import textwrap
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
-from util import strhash
 from commands.common import get_uuid
 
 load_dotenv()

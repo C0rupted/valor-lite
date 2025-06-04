@@ -1,10 +1,8 @@
 import discord
 import os
-import json
 from discord.ext.commands import Bot, Context
 import valor
 import commands
-import listeners
 import logging
 import time
 from sql import ValorSQL
@@ -40,9 +38,6 @@ async def main():
         ValorSQL.pool = await aiomysql.create_pool(**ValorSQL._info, loop=valor.loop)
         
         await commands.register_all(valor)
-        await listeners.register_all(valor)
-        # loop.run_until_complete(cron._smp_loop(valor))
-        # loop.run_until_complete(cron.gxp_roles(valor))
         
         await asyncio.gather(
             asyncio.ensure_future(valor.run()),

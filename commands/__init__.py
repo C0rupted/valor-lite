@@ -1,7 +1,5 @@
 from .online import _register_online
 from .help import _register_help
-from .showbuild import _register_showbuild
-from .preferences import _register_preferences
 from .gxp import _register_gxp
 from .guild import _register_guild
 from .plot import _register_plot
@@ -24,8 +22,6 @@ from .guildgroup import _register_guildgroup
 from .sus import _register_sus
 from .blacklist import _register_blacklist
 from .warcount import _register_warcount
-from .inspire import _register_inspire
-from .update_stats import _register_update_stats 
 from .inactivity import _register_inactivity
 from .completion import _register_completion
 from .HQ import _register_HQ
@@ -43,32 +39,28 @@ async def register_all(valor: Valor):
     """
     await _register_help(valor)
     await _register_online(valor)
-    await _register_showbuild(valor)
-    await _register_preferences(valor)
     await _register_gxp(valor)
     await _register_guild(valor)
-    await _register_plot(valor)
+    #await _register_plot(valor)
     await _register_activity(valor)
     await _register_profile(valor)
-    await _register_join(valor)
-    await _register_plot2(valor)
+    #await _register_join(valor)
+    #await _register_plot2(valor)
     await _register_avg(valor)
     await _register_leaderboard(valor)
     await _register_coolness(valor)
-    await _register_uniform(valor)
+    #await _register_uniform(valor)
     await _register_up(valor)
-    await _register_glist(valor)
+    #await _register_glist(valor)
     await _register_tickets(valor)
-    await _register_info(valor)
+    #await _register_info(valor)
     await _register_history(valor)
     await _register_map(valor)
-    await _register_wipe(valor)
-    await _register_guildgroup(valor)
+    #await _register_wipe(valor)
+    #await _register_guildgroup(valor)
     await _register_sus(valor)
     await _register_blacklist(valor)
     await _register_warcount(valor)
-    await _register_inspire(valor)
-    await _register_update_stats(valor)
     await _register_inactivity(valor)
     await _register_completion(valor)
     await _register_HQ(valor)

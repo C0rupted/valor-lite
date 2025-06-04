@@ -62,7 +62,7 @@ async def _register_blacklist(valor: Valor):
                         guild = guild["guild"]["name"]
                 
                 embed = Embed(color=0xFF10,title="Blacklist search result",description=username)
-                embed.set_footer(text="Ask any Titan+ with proof to add someone to the blacklist")
+                embed.set_footer(text="Ask any ANO Chief or Titan with proof to add someone to the blacklist")
                 embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/512/{uuid}.png?y=-40")
                 embed.add_field(name="Reason",value=result[0][0],inline=False)
                 embed.add_field(name="Current guild",value=guild)
