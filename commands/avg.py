@@ -1,6 +1,6 @@
 import requests
 from valor import Valor
-from mp import avg_process
+from util import avg_process
 from sql import ValorSQL
 from util import ErrorEmbed, HelpEmbed, LongFieldEmbed, LongTextEmbed, sinusoid_regress
 from commands.common import guild_name_from_tag, guild_names_from_tags

@@ -4,7 +4,7 @@ from .common import  guild_name_from_tag, guild_names_from_tags
 from discord.ext.commands import Context
 from discord import File
 from dotenv import load_dotenv
-from mp import plot_process
+from util import plot_process
 import multiprocessing as mp
 from concurrent.futures import ProcessPoolExecutor
 import time

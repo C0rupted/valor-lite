@@ -1,6 +1,6 @@
 from valor import Valor
 from discord.ext.commands import Context
-from util import ErrorEmbed, LongTextEmbed, LongFieldEmbed, discord_ansicolor
+from util import ErrorEmbed, LongTextEmbed, LongFieldEmbed
 from .common import guild_name_from_tag, get_left_right, get_guild_names_from_group
 from datetime import datetime
 from sql import ValorSQL

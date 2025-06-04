@@ -2,7 +2,6 @@ import requests
 import time
 from valor import Valor
 from sql import ValorSQL
-import mongo
 from util import ErrorEmbed, HelpEmbed, LongFieldEmbed, LongTextEmbed, LongTextTable, get_war_rank, get_xp_rank
 from discord.ext.commands import Context
 from datetime import datetime
