@@ -143,5 +143,8 @@ dmypy.json
 # Annihiliation tracker
 assets/annihilation_tracker.json
 
+# All settings
+settings/*
+
 # Vscode
 .vscode/

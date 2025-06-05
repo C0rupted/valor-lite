@@ -29,6 +29,7 @@ from .lootpool import _register_lootpool
 from .aspectpool import _register_aspectpool
 from .annihilation import _register_annihilation
 from .oceantrials import _register_oceantrials
+from .settings import _register_settings
 
 from valor import Valor
 
@@ -67,4 +68,5 @@ async def register_all(valor: Valor):
     await _register_aspectpool(valor)
     await _register_annihilation(valor)
     await _register_oceantrials(valor)
+    await _register_settings(valor)
 

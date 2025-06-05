@@ -5,3 +5,4 @@ from .constants import EMOJIS, ITEM_TO_EMOJI_MAP, ASPECT_TO_EMOJI_MAP
 from .time import to_seconds
 from .avg_process import avg_process
 from .plot_process import plot_process
+from .settings_manager import SETTINGS_SCHEMA, SettingsManager
