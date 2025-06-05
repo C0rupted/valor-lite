@@ -1,12 +1,10 @@
 from sql import ValorSQL
 from valor import Valor
 from discord.ext.commands import Context
-from util import ErrorEmbed, LongTextEmbed, LongFieldEmbed
-import commands.common
-import os
-import argparse
+from util import ErrorEmbed, LongTextEmbed
 from dotenv import load_dotenv
 from .common import guild_name_from_tag
+import commands.common, os, argparse
 
 load_dotenv()
 TEST = os.getenv("TEST")=="TRUE"

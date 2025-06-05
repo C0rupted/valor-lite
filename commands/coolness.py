@@ -1,16 +1,11 @@
 from valor import Valor
 from discord.ext.commands import Context
-from util import ErrorEmbed, LongTextEmbed, LongFieldEmbed, LongTextTable
-from .common import guild_name_from_tag, guild_names_from_tags
-import random
-from datetime import datetime
-import requests
+from util import ErrorEmbed, LongTextEmbed, LongTextTable
+from .common import guild_names_from_tags
 from sql import ValorSQL
-from commands.common import get_uuid, from_uuid
-import time
-import argparse
-import os
-from dotenv import load_dotenv  
+from dotenv import load_dotenv
+import time, requests, argparse, os
+
 load_dotenv()
 
 async def _register_coolness(valor: Valor):

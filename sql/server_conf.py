@@ -1,13 +1,8 @@
 # Connecting to SQL DB for handling server configurations
 # import mysql.connector
 # from mysql.connector import pooling
-import asyncio
-import aiomysql
-import mysql.connector
-import os
 from dotenv import load_dotenv
-import logging
-import time
+import time, aiomysql, mysql.connector, os
 
 # in case it hasn't already been done yet
 load_dotenv()

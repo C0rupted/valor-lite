@@ -1,19 +1,10 @@
-import requests
 from valor import Valor
 from util import avg_process
-from sql import ValorSQL
-from util import ErrorEmbed, HelpEmbed, LongFieldEmbed, LongTextEmbed, sinusoid_regress
-from commands.common import guild_name_from_tag, guild_names_from_tags
+from util import ErrorEmbed, LongTextEmbed
+from commands.common import guild_names_from_tags
 from discord.ext.commands import Context
-from datetime import datetime
-from concurrent.futures import ProcessPoolExecutor
-from discord import File
 from dotenv import load_dotenv
-import numpy as np
-import time
-import argparse
-import gc
-import os
+import time, argparse, os
 
 load_dotenv()
 async def _register_avg(valor: Valor):

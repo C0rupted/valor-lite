@@ -1,11 +1,8 @@
-import discord
-import os
-import json
 from sql import ValorSQL
 import multiprocessing as mp
-import time
 from valor import aiohttp_handler
 from dotenv import load_dotenv
+import time, os, json, discord
 
 load_dotenv()
 

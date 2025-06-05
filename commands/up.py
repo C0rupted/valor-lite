@@ -1,9 +1,7 @@
 from valor import Valor
 from util.valor_message import LongTextEmbed
 from discord.ext.commands import Context
-import argparse
-import requests
-import time
+import argparse, requests, time
 
 async def _register_up(valor: Valor):
     desc = "Shows the uptime of Wynncraft worlds along with multiple sorting options."

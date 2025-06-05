@@ -1,15 +1,11 @@
 from valor import Valor
 from discord.ext.commands import Context
 from discord.ui import View
-from discord import File
 from datetime import datetime
-import discord
-import requests
 from sql import ValorSQL
 from util import ErrorEmbed, LongTextEmbed, LongTextTable
 from commands.common import get_left_right
-import time
-import argparse
+import discord, requests, argparse, time
 
 class GuildView(View):
     def __init__(self, guild):

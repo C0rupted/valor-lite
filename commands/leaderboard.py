@@ -2,13 +2,11 @@ from valor import Valor
 from discord.ext.commands import Context
 from discord.ui import Select, View
 from discord import File
-import discord, asyncio, time, os, aiohttp
 from util import ErrorEmbed, LongTextEmbed
-from PIL import Image
-from PIL import ImageFont
-from PIL import ImageDraw
+from PIL import Image, ImageFont, ImageDraw
 from sql import ValorSQL
-from commands.common import get_uuid, from_uuid
+from commands.common import from_uuid
+import discord, asyncio, time, os, aiohttp
 
 class LeaderboardSelect(Select):
     def __init__(self, options):

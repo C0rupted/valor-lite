@@ -1,7 +1,5 @@
-import aiohttp, asyncio, time
 from valor import Valor
 from sql import ValorSQL
-import discord
 from util import ErrorEmbed, LongTextEmbed, LongTextTable
 from discord.ext.commands import Context
 from discord.ui import View
@@ -9,9 +7,8 @@ from discord import File
 from datetime import datetime, timedelta
 from PIL import Image, ImageFont, ImageDraw
 from dotenv import load_dotenv
-import math, os
 from commands.common import get_left_right, guild_names_from_tags
-import argparse
+import argparse, aiohttp, asyncio, time, discord, math, os
 
 load_dotenv()
 async def _register_warcount(valor: Valor):

@@ -1,9 +1,8 @@
 from valor import Valor
 from discord.ext.commands import Context
 from discord.ui import Select, View
-import discord, requests
 from util import ErrorEmbed, LongTextEmbed, EMOJIS, ITEM_TO_EMOJI_MAP
-
+import discord, requests
 
 async def _register_lootpool(valor: Valor):
     desc = "Item lootpool for lootrun camps"

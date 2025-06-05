@@ -1,20 +1,14 @@
-import requests
-import time
 from valor import Valor
 from sql import ValorSQL
-from util import ErrorEmbed, HelpEmbed, LongFieldEmbed, LongTextEmbed, get_war_rank, get_xp_rank
+from util import ErrorEmbed, LongTextEmbed, get_war_rank, get_xp_rank
 from discord.ext.commands import Context
 from datetime import datetime
 from discord import File
 from dotenv import load_dotenv
-import os
-import re
-import math
-import textwrap
-from PIL import Image
-from PIL import ImageFont
-from PIL import ImageDraw
+from PIL import Image, ImageFont, ImageDraw
 from commands.common import get_uuid
+import os, re, math, textwrap, time, requests
+
 
 load_dotenv()
 async def _register_profile(valor: Valor):

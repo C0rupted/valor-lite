@@ -1,6 +1,6 @@
-from typing import List, Tuple
-import math
-import numpy as np
+from typing import Tuple
+import math, numpy
+
 def sinusoid_regress(x, y) -> Tuple[int, int, int, int]:
     avg = sum(y)/len(y)
     stdev = (sum((yi-avg)**2 for yi in y)/len(y))**.5
@@ -11,7 +11,7 @@ def sinusoid_regress(x, y) -> Tuple[int, int, int, int]:
 
     min_period = 40000
     periods = [inx[i]-inx[i-1] for i in range(len(inx)) if inx[i]-inx[i-1] >= min_period]
-    avg_period = np.mean(periods)
+    avg_period = numpy.mean(periods)
     freq = 1/avg_period
     # candidate phase shifts
     clamp = lambda x: -1 if x < -1 else 1 if x > 1 else x

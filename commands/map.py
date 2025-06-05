@@ -1,17 +1,9 @@
-import requests
 from valor import Valor
-from sql import ValorSQL
-from util import ErrorEmbed, HelpEmbed, LongFieldEmbed, LongTextEmbed, sinusoid_regress
+from util import ErrorEmbed, LongTextEmbed
 from discord.ext.commands import Context
-from datetime import datetime
-from discord import File
-from collections import defaultdict
-import logging
 from dotenv import load_dotenv
-import argparse
 from PIL import Image, ImageDraw, ImageFont
-from .common import guild_name_from_tag, guild_tag_from_name
-import json, math, json, discord, time
+import json, argparse, json, discord, requests, logging
 
 load_dotenv()
 

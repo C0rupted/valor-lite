@@ -1,7 +1,6 @@
 from valor import Valor
 from discord.ext.commands import Context
-from util import ErrorEmbed, LongTextEmbed, LongFieldEmbed
-import random
+from util import ErrorEmbed, LongTextEmbed
 from datetime import datetime
 import requests
 

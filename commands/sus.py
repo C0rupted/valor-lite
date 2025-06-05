@@ -1,14 +1,9 @@
 from valor import Valor
-from discord import Embed, File
+from discord import Embed
 from discord.ext.commands import Context
-from util import ErrorEmbed, LongTextEmbed, HelpEmbed, LongFieldEmbed
-import requests
-import datetime
-import time
-import uuid
-import os
+from util import ErrorEmbed, LongTextEmbed
 from sql import ValorSQL
-import discord
+import requests, datetime, time, uuid, os, discord
 
 
 async def _register_sus(valor: Valor):

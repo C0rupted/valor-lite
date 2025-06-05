@@ -1,7 +1,6 @@
-import time, discord, os, asyncio, aiohttp, math
 from valor import Valor
 from sql import ValorSQL
-from util import ErrorEmbed, HelpEmbed, LongFieldEmbed, LongTextEmbed, LongTextTable
+from util import ErrorEmbed, LongTextEmbed
 from discord.ext.commands import Context
 from PIL import Image, ImageFont, ImageDraw
 from discord import File
@@ -9,8 +8,8 @@ from discord.ui import View
 from datetime import datetime
 from dotenv import load_dotenv
 from .common import get_left_right, guild_names_from_tags
-import argparse
 from datetime import datetime, timedelta
+import argparse, time, discord, os, asyncio, aiohttp, math
 
 load_dotenv()
 async def _register_graids(valor: Valor):

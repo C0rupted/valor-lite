@@ -1,8 +1,7 @@
 from valor import Valor
 from discord.ext.commands import Context
-from util import ErrorEmbed, LongTextEmbed, HelpEmbed, LongFieldEmbed
-import random
-import requests
+#from util import ErrorEmbed, LongTextEmbed, HelpEmbed, LongFieldEmbed
+
 
 async def _register_info(valor: Valor):
     desc =  "All macro-like, static commands"

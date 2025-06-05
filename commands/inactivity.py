@@ -1,14 +1,11 @@
-import requests
-import time
 from valor import Valor
 from sql import ValorSQL
-from util import ErrorEmbed, HelpEmbed, LongFieldEmbed, LongTextEmbed, LongTextTable, get_war_rank, get_xp_rank
+from util import LongTextEmbed, LongTextTable
 from discord.ext.commands import Context
 from datetime import datetime
 from dotenv import load_dotenv
-import os
-from commands.common import get_uuid, get_left_right, guild_names_from_tags, guild_tags_from_names, get_guild_members
-import argparse
+from commands.common import guild_names_from_tags
+import argparse, time
 
 load_dotenv()
 async def _register_inactivity(valor: Valor):

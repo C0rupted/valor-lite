@@ -1,16 +1,6 @@
-import discord
-import os
-from discord.ext.commands import Bot, Context
-import valor
-import commands
-import logging
-import time
 from sql import ValorSQL
-import asyncio
-import aiomysql
 from dotenv import load_dotenv
-import multiprocessing
-import platform
+import platform, multiprocessing, discord, os, valor, commands, logging, time, asyncio, aiomysql
 
 # this is supposedly "unsafe" on macos, but is the default on unix.
 # alternatively use forkserver (or spawn, which breaks because it's unfreezable) instead of fork

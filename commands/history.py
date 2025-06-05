@@ -2,10 +2,9 @@ from valor import Valor
 from sql import ValorSQL
 from discord.ext.commands import Context
 from util import ErrorEmbed, LongTextEmbed, LongTextMessage
-from commands.common import get_uuid, from_uuid
+from commands.common import get_uuid
 from datetime import datetime, timedelta
-import time
-import requests
+import time, requests
 
 async def _register_history(valor: Valor):
     desc = "Gets you the guild membership history of a player."

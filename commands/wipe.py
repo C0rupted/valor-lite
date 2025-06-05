@@ -1,18 +1,11 @@
 from valor import Valor
 from discord.ext.commands import Context
-from util import ErrorEmbed, LongTextEmbed, LongFieldEmbed
+from util import ErrorEmbed, LongTextEmbed
 from .common import guild_name_from_tag, get_left_right, get_guild_names_from_group
 from datetime import datetime
 from sql import ValorSQL
-import requests
-import commands.common
-import re
-import argparse
-import time
-import os
-import random
 from dotenv import load_dotenv
-import matplotlib.pyplot as plt
+import argparse, time, os
 
 load_dotenv()
 TEST = os.getenv("TEST")=="TRUE"

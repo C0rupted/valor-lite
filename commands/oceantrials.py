@@ -1,12 +1,10 @@
-import time
 from valor import Valor
 from sql import ValorSQL
-import discord
-from util import ErrorEmbed, LongTextEmbed
+from util import ErrorEmbed
 from discord.ext.commands import Context
 from commands.common import get_left_right, guild_names_from_tags
 from datetime import datetime
-import argparse
+import argparse, discord, time
 
 MILESTONES = [
     (50, 5), (100, 5), (150, 5), (200, 5), (250, 5),

@@ -1,15 +1,11 @@
 from valor import Valor
-from util import ErrorEmbed, HelpEmbed, LongFieldEmbed, LongTextEmbed, sinusoid_regress
-from .common import  guild_name_from_tag, guild_names_from_tags
+from util import ErrorEmbed, LongTextEmbed, plot_process
+from .common import guild_names_from_tags
 from discord.ext.commands import Context
 from discord import File
 from dotenv import load_dotenv
-from util import plot_process
-import multiprocessing as mp
 from concurrent.futures import ProcessPoolExecutor
-import time
-import argparse
-import os
+import time, argparse, os
 
 load_dotenv()
 async def _register_plot2(valor: Valor):

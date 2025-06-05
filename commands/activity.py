@@ -1,15 +1,10 @@
-import requests
+import requests, aiohttp, asyncio, argparse
 from valor import Valor
 from util import ErrorEmbed, HelpEmbed, LongFieldEmbed, LongTextEmbed
 from discord.ext.commands import Context
 from datetime import datetime
 from dotenv import load_dotenv
 from typing import Tuple
-import os
-import aiohttp
-import asyncio
-import argparse
-import time
 from sql import ValorSQL
 from .common import guild_name_from_tag
 

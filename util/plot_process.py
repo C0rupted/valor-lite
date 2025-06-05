@@ -5,7 +5,6 @@ from scipy.interpolate import make_interp_spline
 from matplotlib.ticker import MaxNLocator
 import numpy as np
 from datetime import datetime
-import time
 
 def plot_process(lock, opt, query):
     a = []

@@ -1,4 +1,4 @@
-from typing import Any, List
+from typing import List
 
 def fmt(header: List[str], rows: List[List[any]], separators=False, str_converter=None) -> str:
     # go through each column and find what the longest one is

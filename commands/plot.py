@@ -1,19 +1,14 @@
-import requests
 from valor import Valor
 from sql import ValorSQL
-from util import ErrorEmbed, HelpEmbed, LongFieldEmbed, LongTextEmbed, sinusoid_regress
+from util import ErrorEmbed, LongTextEmbed, sinusoid_regress
 from .common import  guild_name_from_tag
 from discord.ext.commands import Context
 from datetime import datetime
 from discord import File
 from dotenv import load_dotenv
-import os
 import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
-import time
-import math
-import random
 from matplotlib.ticker import MaxNLocator
+import os, time, math, requests
 
 load_dotenv()
 async def _register_plot(valor: Valor):

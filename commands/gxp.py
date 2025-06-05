@@ -1,16 +1,12 @@
-import requests
 from valor import Valor
-from util import ErrorEmbed, HelpEmbed, LongFieldEmbed, LongTextEmbed, to_seconds
+from util import ErrorEmbed, LongFieldEmbed, LongTextEmbed, to_seconds
 from sql import ValorSQL
 from discord.ext.commands import Context
-from datetime import datetime
 from dotenv import load_dotenv
-import discord, asyncio, time, os, aiohttp, math
 from discord.ui import View
 from discord import File
-from PIL import Image
-from PIL import ImageFont
-from PIL import ImageDraw
+from PIL import Image, ImageFont, ImageDraw
+import discord, asyncio, time, os, aiohttp, math
 
 load_dotenv()
 async def _register_gxp(valor: Valor):

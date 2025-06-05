@@ -2,12 +2,7 @@ from valor import Valor
 from discord import Embed
 from discord.ext.commands import Context
 from util import ErrorEmbed, LongTextEmbed
-import argparse
-import asyncio
-import time
-import re
-import json
-import os
+import argparse, asyncio, time, re, json, os
 
 async def _register_annihilation(valor: Valor):
     desc = "Tracks and informs of the next Annihilation world event"

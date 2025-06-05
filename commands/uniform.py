@@ -1,13 +1,9 @@
-from util.valor_message import LongTextEmbed
+from util import LongTextEmbed, ErrorEmbed
 from valor import Valor
 from discord.ext.commands import Context
 from discord import File
-from util import ErrorEmbed
 from PIL import Image, ImageColor
-import argparse
-import requests
-import base64
-import ast
+import argparse, requests, base64, ast
 
 async def _register_uniform(valor: Valor):
     desc = "Generates skin with ANO uniform based on the inserted username."

@@ -1,17 +1,9 @@
 from valor import Valor
 from discord.ext.commands import Context
-from discord.ui import View
-from discord import File
-from datetime import datetime
-import discord
-import argparse
-import time
-import math
-import numpy as np
 from sql import ValorSQL
 from util import ErrorEmbed, LongTextEmbed, LongTextTable
 from commands.common import get_uuid, role1
-
+import discord, argparse, time, math
 
 
 async def get_tickets():

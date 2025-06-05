@@ -1,10 +1,8 @@
 from valor import Valor
 from discord.ext.commands import Context
-from util import ErrorEmbed, LongTextEmbed, LongFieldEmbed
+from util import ErrorEmbed, LongTextEmbed
 from .common import guild_name_from_tag
-import discord
-import argparse
-import requests
+import discord, argparse, requests
 
 async def _register_online(valor: Valor):
     desc = "Online: shows who's online in a guild\nThe new command is formatted like this: -online -g <guild_TAG>.\n For example: -online -g ano"

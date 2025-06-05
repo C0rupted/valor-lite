@@ -1,9 +1,5 @@
-import discord
-import os
-import util
-import discord.ext
+import discord, requests
 from discord.ext.commands import Context
-import requests
 from valor import Valor
 
 

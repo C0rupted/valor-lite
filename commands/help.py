@@ -1,5 +1,5 @@
 from valor import Valor
-from util import ErrorEmbed, HelpEmbed
+from util import HelpEmbed
 from discord.ext.commands import Context
 
 async def _register_help(valor: Valor):

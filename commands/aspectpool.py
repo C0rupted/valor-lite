@@ -1,8 +1,8 @@
 from valor import Valor
 from discord.ext.commands import Context
 from discord.ui import Select, View
-import discord, requests
 from util import ErrorEmbed, LongTextEmbed, EMOJIS, ASPECT_TO_EMOJI_MAP
+import discord, requests
 
 
 async def _register_aspectpool(valor: Valor):

@@ -1,16 +1,12 @@
+from dotenv import load_dotenv
+from .common import from_uuid, get_uuid, guild_tag_from_name
 from sql import ValorSQL
 from valor import Valor
 from discord import Embed
 from discord.ext.commands import Context
 from util import ErrorEmbed, LongTextEmbed, tables
-import commands.common
 from datetime import datetime
-import time
-import os
-import argparse
-from dotenv import load_dotenv
-from .common import from_uuid, get_uuid, guild_tag_from_name, current_guild_from_uuid
-import requests
+import os, argparse, requests
 
 load_dotenv()
 TEST = os.getenv("TEST")=="TRUE"
