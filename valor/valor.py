@@ -2,7 +2,7 @@ from sql import ValorSQL
 import multiprocessing as mp
 from valor import aiohttp_handler
 from dotenv import load_dotenv
-import time, os, json, discord
+import time, os, json, discord, discord.ext.commands
 
 load_dotenv()
 
