@@ -11,7 +11,7 @@ load_dotenv()
 TEST = os.getenv("TEST")=="TRUE"
 
 async def _register_wipe(valor: Valor):
-    desc = "Read or Update the alliance."
+    desc = "Wipe time command"
 
     wipe_parser = argparse.ArgumentParser(description='Wipe Time Command')
     wipe_parser.add_argument('-g', '--guild', nargs='+', default=["ANO"])
