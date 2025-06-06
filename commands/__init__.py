@@ -17,7 +17,6 @@ from .tickets import _register_tickets
 from .info import _register_info
 from .history import _register_history
 from .wipe import _register_wipe
-from .guildgroup import _register_guildgroup
 from .sus import _register_sus
 from .blacklist import _register_blacklist
 from .warcount import _register_warcount
@@ -29,6 +28,7 @@ from .lootpool import _register_lootpool
 from .aspectpool import _register_aspectpool
 from .annihilation import _register_annihilation
 from .oceantrials import _register_oceantrials
+from .inspire import _register_inspire
 from .settings import _register_settings
 
 from valor import Valor
@@ -56,7 +56,6 @@ async def register_all(valor: Valor):
     await _register_history(valor)
     await _register_map(valor)
     await _register_wipe(valor)
-    #await _register_guildgroup(valor)
     await _register_sus(valor)
     await _register_blacklist(valor)
     await _register_warcount(valor)
@@ -68,5 +67,6 @@ async def register_all(valor: Valor):
     await _register_aspectpool(valor)
     await _register_annihilation(valor)
     await _register_oceantrials(valor)
+    await _register_inspire(valor)
     await _register_settings(valor)
 
