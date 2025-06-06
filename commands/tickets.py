@@ -1,12 +1,12 @@
 from valor import Valor
 from discord.ext.commands import Context
 from sql import ValorSQL
-from util import ErrorEmbed, LongTextEmbed, LongTextTable
-from commands.common import get_uuid, role1
+from util import ErrorEmbed, LongTextEmbed, LongTextTable, SettingsManager
+from commands.common import guild_name_from_tag
 import discord, argparse, time, math
 
 
-async def get_tickets():
+async def get_tickets(guild_name):
         res = await ValorSQL._execute(f"""
 SELECT 
     GMC.name,
@@ -26,7 +26,7 @@ LEFT JOIN
      WHERE YEARWEEK(FROM_UNIXTIME(timestamp), 1) = YEARWEEK(CURDATE(), 1)
      GROUP BY uuid) TB ON UN.uuid = TB.uuid
 WHERE 
-    GMC.guild = "Titans Valor" 
+    GMC.guild = "{guild_name}" 
     AND YEARWEEK(FROM_UNIXTIME(PDR.time), 1) = YEARWEEK(CURDATE(), 1)
 GROUP BY 
     GMC.name;
@@ -56,7 +56,9 @@ def do_ticket_math(value, b):
 async def _register_tickets(valor: Valor):
     desc = "Provides ticket leaderboard"
     parser = argparse.ArgumentParser(description='Tickets Command')
-    parser.add_argument('-a', '--add', nargs='*', default=[])
+    parser.add_argument('-g', '--guild', default=None, help="Guild tag")
+
+    manager = SettingsManager()
 
     @valor.command(aliases=["t"])
     async def tickets(ctx: Context, *options):
@@ -65,22 +67,11 @@ async def _register_tickets(valor: Valor):
         except:
             return await LongTextEmbed.send_message(valor, ctx, "tickets", parser.format_help().replace("main.py", "-tickets"), color=0xFF00)
         
-        if opt.add:
-            if not role1(ctx.author):
-                return await ctx.send(embed=ErrorEmbed("No Permissions"))
-            try:
-                uuid = await get_uuid(opt.add[0])
-                value = opt.add[1]
-            except: 
-                return await ctx.send(embed=ErrorEmbed("Invalid input"))
-            res = await ValorSQL._execute(f"""
-INSERT INTO ticket_bonuses (uuid, ticket_bonus, timestamp) VALUES ('{uuid}', {value}, {str(time.time())});
-""")        
-            embed = discord.Embed(title="Operation successful", description=f"Successfully added {value} tickets to {opt.add[0]} ({uuid})", color=0xFF00)
-            return await ctx.send(embed=embed)
-        else:
-            ticket_data = await get_tickets()
+        if opt.guild:
+            ticket_data = await get_tickets(guild_name_from_tag(opt.guild))
             await LongTextTable.send_message(valor, ctx, ticket_data[0], ticket_data[1])
+        else:
+            return await LongTextEmbed.send_message(valor, ctx, "tickets", parser.format_help().replace("main.py", "-tickets"), color=0xFF00)
 
     @tickets.error
     async def cmd_error(ctx, error: Exception):

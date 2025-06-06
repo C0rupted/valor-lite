@@ -6,7 +6,7 @@ from commands.common import get_left_right, guild_names_from_tags
 from datetime import datetime
 import argparse, discord, time
 
-MILESTONES = [
+MILESTONES = [  # (wars needed for milestone, LE earnt for milestone)
     (50, 5), (100, 5), (150, 5), (200, 5), (250, 5),
     (300, 10), (400, 10), (500, 10), (600, 10),
     (700, 10), (800, 10), (900, 10), (1000, 15)
@@ -55,7 +55,7 @@ async def _register_oceantrials(valor: Valor):
         # Get time bounds for the season using the existing helper
         valid_range = await get_left_right(opt, time.time())
         if valid_range == "N/A":
-            return await ctx.send(embed=ErrorEmbed("Invalid season name input\n\nScream at Andrew or Cal if something should be working"))
+            return await ctx.send(embed=ErrorEmbed("Invalid season name input"))
         left, right = valid_range
 
         # Build footer

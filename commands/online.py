@@ -6,7 +6,6 @@ import discord, argparse, requests
 
 async def _register_online(valor: Valor):
     desc = "Online: shows who's online in a guild\nThe new command is formatted like this: -online -g <guild_TAG>.\n For example: -online -g ano"
-    rank_order = dict(zip(["recruit", "recruiter", "captain", "strategist", "chief", "owner"], range(5, -1, -1)))
 
     parser = argparse.ArgumentParser(description='Online command')
     parser.add_argument('-g', '--guild', type=str)
@@ -63,7 +62,7 @@ async def _register_online(valor: Valor):
     
     @online.error
     async def cmd_error(ctx, error: Exception):
-        await ctx.send(embed=ErrorEmbed("The new command is formatted like this: -online -g <guild_TAG>.\n For example: -online -g ano"))
+        await ctx.send(embed=ErrorEmbed("The command is formatted like this: -online -g <guild_TAG>.\n For example: -online -g ANO"))
         print(error.with_traceback())
     
     @valor.help_override.command()

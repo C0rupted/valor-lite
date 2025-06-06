@@ -8,7 +8,7 @@ import json, argparse, json, discord, requests, logging
 load_dotenv()
 
 async def _register_map(valor: Valor):
-    desc = "100 percent an Athena knockoff"
+    desc = "Real-time guild map command."
     parser = argparse.ArgumentParser(description='Map command')
     parser.add_argument('-g', '--guild', nargs='+')
     parser.add_argument('-z', '--zone')

@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from .common import from_uuid, get_uuid, guild_tag_from_name
+from .common import from_uuid, get_uuid, guild_tag_from_name, current_guild_from_uuid
 from sql import ValorSQL
 from valor import Valor
 from discord import Embed

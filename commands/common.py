@@ -2,7 +2,7 @@ from sql import ValorSQL
 from typing import List, Tuple, MutableSet
 import time, requests
 
-def role1(usr, allow={892879299881869352, 702992600835031082, 702991927318020138}): # for setting uuid to id
+def is_allowed(usr, allow: list): # for setting uuid to id
     roles = {x.id for x in usr.roles}
     return len(allow & roles) > 0
 

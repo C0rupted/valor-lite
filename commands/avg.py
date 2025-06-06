@@ -9,18 +9,12 @@ import time, argparse, os
 load_dotenv()
 async def _register_avg(valor: Valor):
     desc = "Averages online activity data"
-    opts = ["tag"]
-    choice_em = ErrorEmbed(f"Your options are `{repr(opts)}`")
-    parser = argparse.ArgumentParser(description='Plot2 command')
+    parser = argparse.ArgumentParser(description='Average command')
     parser.add_argument('-r', '--range', nargs='+', default=None)
     parser.add_argument('-g', '--guild', nargs='+')
     
     @valor.command()
     async def avg(ctx: Context, *options):
-        roles = {x.id for x in ctx.author.roles}
-        # if not 703018636301828246 in roles and not 733841716855046205 in roles and ctx.author.id != 146483065223512064:
-        #     return await ctx.send(embed=ErrorEmbed("Skill Issue"))
-        
         try:
             opt = parser.parse_args(options)
         except:
@@ -51,9 +45,8 @@ async def _register_avg(valor: Valor):
            end_time = int(start - 3600 * 24 * float(opt.range[1]))
 
 
-        COUNCILID = int(os.getenv('COUNCILID'))
-        if (end_time - start_time) > (365 *24 * 3600) and COUNCILID not in roles:
-           return await LongTextEmbed.send_message(valor, ctx, "avg Error", f" Maximum time range exceeded (365 days), ask a council member if you need a longer timeframe.", color=0xFF0000)
+        if (end_time - start_time) > (365 *24 * 3600):
+           return await LongTextEmbed.send_message(valor, ctx, "avg Error", f" Maximum time range exceeded (365 days), ask an ANO chief if you need a longer timeframe.", color=0xFF0000)
 
         data_pts, content = await avg_process(query)
         
