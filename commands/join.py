@@ -2,14 +2,24 @@ from valor import Valor
 from discord.ext.commands import Context
 from util import ErrorEmbed, LongTextEmbed
 from datetime import datetime
+from util import SettingsManager
 import requests
 
 async def _register_join(valor: Valor):
     desc = "Gets you the join date of a player to the guild."
+    manager = SettingsManager()
     
     @valor.command()
     async def join(ctx: Context, username: str):
-        user_data = requests.get("https://api.wynncraft.com/v3/guild/Titans%20Valor").json()
+        server_id = ctx.guild.id
+        guild_name = manager.get(server_id, "guild_name")
+
+        if not guild_name:
+            return await ctx.send(embed=ErrorEmbed(
+                "Guild name is not set for this server. Use `-settings set guild_name <name>` to configure it."
+            ))
+    
+        user_data = requests.get(f"https://api.wynncraft.com/v3/guild/{guild_name}").json()
         users = []
         for k, v in user_data["members"].items():
             if k != "total":

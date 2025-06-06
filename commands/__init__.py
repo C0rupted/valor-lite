@@ -44,7 +44,7 @@ async def register_all(valor: Valor):
     #await _register_plot(valor)
     await _register_activity(valor)
     await _register_profile(valor)
-    #await _register_join(valor)
+    await _register_join(valor)
     #await _register_plot2(valor)
     await _register_avg(valor)
     await _register_leaderboard(valor)
