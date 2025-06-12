@@ -11,10 +11,8 @@ from .avg import _register_avg
 from .leaderboard import _register_leaderboard
 from .map import _register_map
 from .coolness import _register_coolness
-from .uniform import _register_uniform
 from .up import _register_up
 from .tickets import _register_tickets
-from .info import _register_info
 from .history import _register_history
 from .wipe import _register_wipe
 from .sus import _register_sus
@@ -49,10 +47,8 @@ async def register_all(valor: Valor):
     await _register_avg(valor)
     await _register_leaderboard(valor)
     await _register_coolness(valor)
-    #await _register_uniform(valor)
     await _register_up(valor)
     await _register_tickets(valor)
-    #await _register_info(valor)
     await _register_history(valor)
     await _register_map(valor)
     await _register_wipe(valor)
