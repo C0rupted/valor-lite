@@ -359,7 +359,7 @@ ORDER BY all_wars DESC;'''
         guild_to_tag = {}
         if guilds_seen:
             expanded_guilds_str = ','.join(f"'{x}'" for x in guilds_seen) # TODO: batch req size 50
-            res = await ValorSQL._execute(f'SELECT guild, tag, priority FROM guild_tag_name WHERE guild IN ({expanded_guilds_str})')
+            res = await ValorSQL.exec_param('SELECT guild, tag, priority FROM guild_tag_name WHERE guild IN (%s)', (expanded_guilds_str,))
             for guild, tag, priority in res:
                 if priority > guild_to_tag.get(guild, ("N/A", -1))[1]:
                     guild_to_tag[guild] = (tag, priority)

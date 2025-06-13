@@ -25,7 +25,7 @@ async def _register_plot(valor: Valor):
     # helper function
     async def fake_req(captains, name, start, end):
         # raw sql query
-        res = await ValorSQL._execute(f"SELECT * FROM activity_members WHERE guild = \"{name}\" AND timestamp >= {start} AND timestamp <= {end};")
+        res = await ValorSQL.exec_param("SELECT * FROM activity_members WHERE guild = %s AND timestamp >= %s AND timestamp <= %s;", (name, str(start), str(end)))
         ret = {}
         # members = requests.get("https://api.wynncraft.com/public_api.php?action=guildStats&command="+name).json()["members"]
         # cpts = {m["name"] for m in members if rnklut[m["rank"]] >= rnklut["CAPTAIN"]}

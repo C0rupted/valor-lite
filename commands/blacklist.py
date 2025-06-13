@@ -44,8 +44,8 @@ async def _register_blacklist(valor: Valor):
             uuid = await get_uuid(opt.search) if '-' not in opt.search else opt.search
             username = await from_uuid(uuid)
             
-            search_query = f"SELECT reason, timestamp FROM player_blacklist WHERE uuid='{uuid}'"
-            result = await ValorSQL._execute(search_query)
+            search_query = "SELECT reason, timestamp FROM player_blacklist WHERE uuid=%s"
+            result = await ValorSQL.exec_param(search_query, (uuid,))
             
             if result:
                 db_guild = await current_guild_from_uuid(uuid)

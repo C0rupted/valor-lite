@@ -15,8 +15,8 @@ async def _register_history(valor: Valor):
         now = time.time()
 
         # Fetch data from the database
-        join_guilds = await ValorSQL._execute(f"SELECT * FROM guild_join_log WHERE uuid='{uuid}' ORDER BY date DESC")
-        activity_members = await ValorSQL._execute(f"SELECT * FROM activity_members WHERE uuid='{uuid}' ORDER BY timestamp DESC")
+        join_guilds = await ValorSQL.exec_param("SELECT * FROM guild_join_log WHERE uuid=%s ORDER BY date DESC", (uuid,))
+        activity_members = await ValorSQL.exec_param("SELECT * FROM activity_members WHERE uuid=%s ORDER BY timestamp DESC", (uuid,))
 
         # Combine data from both tables
         combined_data = []

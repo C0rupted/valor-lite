@@ -7,7 +7,7 @@ def is_allowed(usr, allow: list): # for setting uuid to id
     return len(allow & roles) > 0
 
 async def get_discord_id(uuid):
-    res = ValorSQL._execute(f"SELECT * FROM id_uuid WHERE uuid='{uuid}' LIMIT 1")
+    res = ValorSQL.exec_param("SELECT * FROM id_uuid WHERE uuid='%s' LIMIT 1", (uuid,))
     if not res:
         return False
     return res[0][0]
@@ -63,8 +63,7 @@ async def get_left_right(opt, start):
 async def get_guild_names_from_group(guild_group: str) -> List[str]:
     if '-' in guild_group: return "N/A"
 
-    guild_group_query = f"SELECT guild FROM guild_group WHERE guild_group='{guild_group}'"
-    res = await ValorSQL._execute(guild_group_query)
+    res = await ValorSQL.exec_param("SELECT guild FROM guild_group WHERE guild_group='%s'", (guild_group,))
     g_names = {x[0] for x in res}
 
     return g_names

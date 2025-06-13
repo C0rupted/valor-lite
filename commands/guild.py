@@ -107,14 +107,14 @@ Created: {datetime.fromisoformat(data["created"][:-1]).strftime("%m/%d/%Y  %H:%M
 
 
 async def get_guild_page_two(data):
-    res = await ValorSQL._execute(f"""
+    res = await ValorSQL.exec_param("""
 SELECT A.name, SUM(C.warcount) AS wars
 FROM
   uuid_name A NATURAL JOIN guild_member_cache B
   LEFT JOIN cumu_warcounts C ON A.uuid=C.uuid
 GROUP BY B.guild, A.name
-HAVING B.guild IN ("{data["name"]}")
-ORDER BY wars DESC;""")
+HAVING B.guild IN (%s)
+ORDER BY wars DESC;""", (data["name"],))
     warcounts = {}
     for pair in res:
         warcounts[pair[0]] = str(pair[1])  

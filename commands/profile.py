@@ -133,7 +133,7 @@ FROM
             img.putpixel((612, 223), green)
 
 
-        cool = min(len(await ValorSQL._execute(f"SELECT * FROM activity_members WHERE uuid='{uuid}' AND timestamp>={time.time()-3600*24*7}"))/100, 1)
+        cool = min(len(await ValorSQL.exec_param("SELECT * FROM activity_members WHERE uuid=%s AND timestamp>=%s", (uuid, str(int(time.time()-3600*24*7),) )))/100, 1)
         cool_percent = round(cool*100)
         value = round(cool*142)
 

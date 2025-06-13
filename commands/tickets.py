@@ -7,7 +7,7 @@ import discord, argparse, time, math
 
 
 async def get_tickets(guild_name):
-        res = await ValorSQL._execute(f"""
+        res = await ValorSQL.exec_param("""
 SELECT 
     GMC.name,
     SUM(CASE WHEN PDR.label = 'g_wars' THEN PDR.delta ELSE 0 END) AS wars_gain,
@@ -26,11 +26,11 @@ LEFT JOIN
      WHERE YEARWEEK(FROM_UNIXTIME(timestamp), 1) = YEARWEEK(CURDATE(), 1)
      GROUP BY uuid) TB ON UN.uuid = TB.uuid
 WHERE 
-    GMC.guild = "{guild_name}" 
+    GMC.guild = %s 
     AND YEARWEEK(FROM_UNIXTIME(PDR.time), 1) = YEARWEEK(CURDATE(), 1)
 GROUP BY 
     GMC.name;
-""")
+""", (guild_name,))
         data = []
         for player in res:
             t = [player[0], do_ticket_math(player[1], 10), do_ticket_math(player[2], 100000000), do_ticket_math(player[3], 35), int(player[4])]
@@ -68,7 +68,7 @@ async def _register_tickets(valor: Valor):
             return await LongTextEmbed.send_message(valor, ctx, "tickets", parser.format_help().replace("main.py", "-tickets"), color=0xFF00)
         
         if opt.guild:
-            ticket_data = await get_tickets(guild_name_from_tag(opt.guild))
+            ticket_data = await get_tickets(await guild_name_from_tag(opt.guild))
             await LongTextTable.send_message(valor, ctx, ticket_data[0], ticket_data[1])
         else:
             return await LongTextEmbed.send_message(valor, ctx, "tickets", parser.format_help().replace("main.py", "-tickets"), color=0xFF00)
