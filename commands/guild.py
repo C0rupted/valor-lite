@@ -3,7 +3,7 @@ from discord.ext.commands import Context
 from discord.ui import View
 from datetime import datetime
 from sql import ValorSQL
-from util import ErrorEmbed, LongTextEmbed, LongTextTable
+from util import ErrorEmbed, LongTextEmbed, LongTextTable, SettingsManager
 from commands.common import get_left_right
 import discord, requests, argparse, time
 
@@ -215,12 +215,22 @@ async def _register_guild(valor: Valor):
     parser = argparse.ArgumentParser(description='Guild command')
     parser.add_argument('-f', '--feature', type=str, default=None)
     parser.add_argument('-r', '--range', nargs='+', default=None)
+    manager = SettingsManager()
 
     @valor.command(aliases=["g"])
     async def guild(ctx: Context, *options):
         if len(options) < 2:
             # default to c0rupted's feature otherwise start argparsing 
-            options = "ANO" if not options else options[0]
+            if not options:
+                server_id = ctx.guild.id
+                guild_tag = manager.get(server_id, "guild_tag")
+
+                if not guild_tag:
+                    return await ctx.send(embed=ErrorEmbed(
+                        "Guild tag is not set for this server. Use `-settings set guild_tag <tag>` to configure it."
+                    ))
+            else:
+                options = options[0]
             view = GuildView(options)
             embed = await get_guild(options, 0)
             view.embed = embed

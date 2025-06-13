@@ -14,7 +14,7 @@ async def _register_wipe(valor: Valor):
     desc = "Wipe time command"
 
     wipe_parser = argparse.ArgumentParser(description='Wipe Time Command')
-    wipe_parser.add_argument('-g', '--guild', nargs='+', default=["ANO"])
+    wipe_parser.add_argument('-g', '--guild', nargs='+')
     wipe_parser.add_argument('-gr', '--group', type=str) # single arg. group name
     wipe_parser.add_argument('-r', '--range', nargs='+', default=[7*24, 0])
     wipe_parser.add_argument('-t', '--threshold', nargs='+', default=[1, -10])

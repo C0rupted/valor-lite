@@ -67,10 +67,21 @@ async def _register_tickets(valor: Valor):
         except:
             return await LongTextEmbed.send_message(valor, ctx, "tickets", parser.format_help().replace("main.py", "-tickets"), color=0xFF00)
         
-        if opt.guild:
-            ticket_data = await get_tickets(await guild_name_from_tag(opt.guild))
-            await LongTextTable.send_message(valor, ctx, ticket_data[0], ticket_data[1])
-        else:
+        try:
+            if opt.guild:
+                ticket_data = await get_tickets(await guild_name_from_tag(opt.guild))
+                await LongTextTable.send_message(valor, ctx, ticket_data[0], ticket_data[1])
+            else:
+                server_id = ctx.guild.id
+                guild_tag = manager.get(server_id, "guild_tag")
+
+                if not guild_tag:
+                    return await ctx.send(embed=ErrorEmbed(
+                        "Guild tag is not set for this server. Use `-settings set guild_tag <tag>` to configure it."
+                    ))
+                ticket_data = await get_tickets(await guild_name_from_tag(guild_tag))
+                await LongTextTable.send_message(valor, ctx, ticket_data[0], ticket_data[1])
+        except:
             return await LongTextEmbed.send_message(valor, ctx, "tickets", parser.format_help().replace("main.py", "-tickets"), color=0xFF00)
 
     @tickets.error
